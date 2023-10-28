@@ -1,3 +1,35 @@
 body {
   font-family: sans-serif;
 }
+
+video {
+  background: #000;
+  width: 90vmin;
+  height: 90vmin;
+  object-fit: cover;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+ol {
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  margin: 1vmin;
+}
+
+li img {
+  width: 30vmin;
+  height: 30vmin;
+  object-fit: cover;
+  background-color: red;
+}
