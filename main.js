@@ -55,6 +55,14 @@ auth0
             const token = await auth0Client.getTokenSilently();
             console.log("TOKEN:", token)
 
+            fetch('https://hackergram.benfoxall.workers.dev', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+                .then(res => res.text())
+                .then(d => console.log(">>>", d))
+
         } else {
             profileElement.style.display = "none";
             logoutButton.style.display = "none";
