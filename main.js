@@ -35,7 +35,9 @@ auth0
 
         logoutButton.addEventListener("click", (e) => {
             e.preventDefault();
-            auth0Client.logout();
+            auth0Client.logout({
+                returnTo: uri,
+            });
         });
 
         const isAuthenticated = await auth0Client.isAuthenticated();
