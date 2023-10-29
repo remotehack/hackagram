@@ -1,11 +1,15 @@
 console.log("Hackergram!")
 
+const { origin, pathname } = window.location
+const uri = origin + pathname;
+console.log(uri)
+
 auth0
     .createAuth0Client({
         domain: "dev-l2qhix4unqfdzpmz.uk.auth0.com",
         clientId: "NmlgknqQLop7qFkGcMeuLMFJpoPQVSPH",
         authorizationParams: {
-            redirect_uri: window.location.origin,
+            redirect_uri: uri
         },
     })
     .then(async (auth0Client) => {
@@ -22,7 +26,7 @@ auth0
             (location.search.includes("code=") || location.search.includes("error="))
         ) {
             await auth0Client.handleRedirectCallback();
-            window.history.replaceState({}, document.title, "/");
+            window.history.replaceState({}, document.title, uri);
         }
 
         //Assumes a button with id "logout" in the DOM
@@ -44,7 +48,7 @@ auth0
             profileElement.style.display = "block";
             profileElement.innerHTML = `
             <p>${userProfile.name}</p>
-            <img src="${userProfile.picture}" style="max-width: 100px" />
+            <img src="${userProfile.picture}" referrerpolicy="no-referrer" style="max-width: 100px" />
           `;
         } else {
             profileElement.style.display = "none";
