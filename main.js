@@ -9,7 +9,8 @@ auth0
         domain: "dev-l2qhix4unqfdzpmz.uk.auth0.com",
         clientId: "NmlgknqQLop7qFkGcMeuLMFJpoPQVSPH",
         authorizationParams: {
-            redirect_uri: uri
+            redirect_uri: uri,
+            audience: 'https://hackergram.benfoxall.workers.dev'
         },
     })
     .then(async (auth0Client) => {
@@ -50,6 +51,10 @@ auth0
             <p>${userProfile.name}</p>
             <img src="${userProfile.picture}" referrerpolicy="no-referrer" style="max-width: 100px" />
           `;
+
+            const token = await auth0Client.getTokenSilently();
+            console.log("TOKEN:", token)
+
         } else {
             profileElement.style.display = "none";
             logoutButton.style.display = "none";
