@@ -55,7 +55,7 @@ auth0
             const token = await auth0Client.getTokenSilently();
             console.log("TOKEN:", token)
 
-            fetch('https://hackergram.benfoxall.workers.dev', {
+            fetch('http://127.0.0.1:8787', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
